@@ -146,7 +146,7 @@ class Magazine:
     def titles(self):
         return [article.title for article in self._articles]
 
-    def prolific_authors(self):
+    def famous_authors(self):
         author_counts = {author: 0 for author in self.contributors()}
         for article in self._articles:
             author_counts[article.author] += 1

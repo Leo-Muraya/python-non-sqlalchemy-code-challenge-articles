@@ -13,12 +13,14 @@ class Magazine:
         return self._name
 
     @name.setter
-    def name(self, value):
-        if not isinstance(value, str):
-            raise ValueError("Name must be a string.")
-        if not (2 <= len(value) <= 16):
-            raise ValueError("Name must be between 2 and 16 characters.")
-        self._name = value
+    def name(self, new_name):
+        if isinstance(new_name, str):
+            if 2 <= len(new_name) <= 16:
+                self._name = new_name
+            else: 
+                ValueError("Name must be between 2 and 16 characters")
+        else:
+            TypeError("Name must be a string")      
 
     @property
     def category(self):
@@ -43,7 +45,7 @@ class Magazine:
     def titles(self):
         return [article.title for article in self._articles]
 
-    def prolific_authors(self):
+    def famous_authors(self):
         author_counts = {author: 0 for author in self.contributors()}
         for article in self._articles:
             author_counts[article.author] += 1
