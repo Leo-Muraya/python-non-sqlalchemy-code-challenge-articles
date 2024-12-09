@@ -28,6 +28,19 @@ class Author:
 
     def write_article(self, magazine, title):
         return Article(self, magazine, title)
+    
+    @name.setter
+    def name(self, new_name):
+        if hasattr(self, "name"):
+            AttributeError("Name cannot be changed")
+        else:
+            if isinstance(new_name, str):
+                if len(new_name):
+                    self._name = new_name
+                else:
+                    ValueError("Name must be longer than 0 characters")
+            else:
+                TypeError("Name must be a string")
 
 
 class Article:
@@ -83,7 +96,6 @@ class Article:
             self._magazine = new_magazine
         else:
             TypeError("Magazine must be an instance of Magazine")
-
     
 
 
@@ -141,5 +153,5 @@ class Magazine:
         return [author for author, count in author_counts.items() if count > 2]
 
 
-# class RelationshipManager:
+
 
