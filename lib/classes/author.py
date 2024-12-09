@@ -1,10 +1,8 @@
 class Author:
-    def __init__(self, name):
-        if not isinstance(name, str) or len(name) == 0:
-            raise ValueError("Name must be a non-empty string.")
+    def __init__(self, name,):
         self._name = name
         self._articles = []
-        self._magazines = []
+        self._magazines = []   
 
     @property
     def name(self):
@@ -26,3 +24,16 @@ class Author:
 
     def write_article(self, magazine, title):
         return Article(self, magazine, title)
+    
+    @name.setter
+    def name(self, new_name):
+        if hasattr(self, "name"):
+            AttributeError("Name cannot be changed")
+        else:
+            if isinstance(new_name, str):
+                if len(new_name):
+                    self._name = new_name
+                else:
+                    ValueError("Name must be longer than 0 characters")
+            else:
+                TypeError("Name must be a string")
