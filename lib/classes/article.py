@@ -8,7 +8,7 @@ class Article:
         self.author = author
         self.magazine = magazine
 
-        # Update relationships
+
         author.add_article(self)
         author.add_magazine(magazine)
 

@@ -34,8 +34,6 @@ class Article:
     all = []
 
     def __init__(self, author, magazine, title):
-        # if not isinstance(title, str) or not (5 <= len(title) <= 50):
-        #     raise ValueError("Title must be a string between 5 and 50 characters.")
         self._title = title
         self.author = author
         self.magazine = magazine
@@ -63,6 +61,28 @@ class Article:
                     ValueError("Title must be between 5 and 50 characters")
             else:
                 TypeError("Title must be a string")
+
+    @property
+    def author(self):
+        return self._author
+    
+    @author.setter
+    def author(self, new_author):
+        if isinstance(new_author, Author):
+            self._author = new_author
+        else:
+            TypeError("Author must be an instance of Author")
+        
+    @property
+    def magazine(self):
+        return self._magazine
+    
+    @magazine.setter
+    def magazine(self, new_magazine):
+        if isinstance(new_magazine, Magazine):
+            self._magazine = new_magazine
+        else:
+            TypeError("Magazine must be an instance of Magazine")
 
     
 
@@ -122,22 +142,4 @@ class Magazine:
 
 
 # class RelationshipManager:
-#     @staticmethod
-#     def add_author(name):
-#         return Author(name)
 
-#     @staticmethod
-#     def add_magazine(name, category):
-#         return Magazine(name, category)
-
-#     @staticmethod
-#     def add_article(author, magazine, title):
-#         return Article(author, magazine, title)
-
-#     @staticmethod
-#     def find_articles_by_author(author):
-#         return author.articles()
-
-#     @staticmethod
-#     def find_authors_by_magazine(magazine):
-#         return magazine.contributors()

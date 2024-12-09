@@ -14,7 +14,7 @@ class Author:
         return self._articles
 
     def magazines(self):
-        return list(set(self._magazines))  # Return unique magazines
+        return list(set(self._magazines)) 
 
     def add_article(self, article):
         if article not in self._articles:
